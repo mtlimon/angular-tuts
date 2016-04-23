@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+<script src="/bower_components/angular-ui-router/"
+        <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="appController as dirList">
+    <div>
+        <p>Filter by:
+            <input type="text" ng-model="search">
+        </p>
+        <ul ng-if="dirList.toggle">
+            <li ng-repeat="item in dirList.list | filter: search" ng-class="item.age > 29? 'over-thirty' : 'under-thirty'" ng-include="'person.html'">
+            </li>
+        </ul>
+        <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+        <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+        <div style="height: 40px;"></div>
+        <input type="text" ng-model="yourName" placeholder="Enter your name"></input>
+        <h1>{{yourName}}</h1>
+        <h4>Add New Person</h4>
+        <form ng-submit="dirList.addPerson()">
+            <input type="text" placeholder="Name" ng-model="dirList.name">
+            <input type="number" placeholder="Age" ng-model="dirList.age">
+            <input type="submit" value="submit">
+        </form>
+    </div>    
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <style>
+    body {
+        font-family: Arial, san-serif;
+    }
+    
+    input {
+        display: block;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    li {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    
+    li span {
+        display: inline-block;
+        line-height: 50px;
+    }
+    
+    li img {
+        margin-right: 10px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .over-thirty {
+        background: #F1F1F1;
+        color: black;
+    }
+    
+    .under-thirty {
+        background: #d1d1d1;
+        color: black;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    </style>
+</head>
+
+<body ng-controller="appController as dirList">
+    <div>
+        <p>Filter by:
+            <input type="text" ng-model="search">
+        </p>
+        <ul ng-class="{'hidden': !dirList.toggle}">
+            <li ng-repeat="item in dirList.list | filter: search" ng-class="item.age > 29? 'over-thirty' : 'under-thirty'" ng-include="'person.html'">
+            </li>
+        </ul>
+        <!--toggle lesson
+        <button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+        <button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+		-->
+        <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+        <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+        <div style="height: 40px;"></div>
+        <input type="text" ng-model="yourName" placeholder="Enter your name"></input>
+        <h1>{{yourName}}</h1>
+        <h4>Add New Person</h4>
+        <form ng-submit="dirList.addPerson()">
+            <input type="text" placeholder="Name" ng-model="dirList.name">
+            <input type="number" placeholder="Age" ng-model="dirList.age">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <!--<div ng-controller="bingoController as bingoJackpots">
+        <ul>
+            <li ng-repeat="item in bingoJackpots.list | filter:search">
+                {{item.name}} - {{item.age}}
+            </li>
+        </ul>
+        <form ng-submit="bingoJackpots.addJackpot()">
+            <input type="text" name="category" placeholder="Category" ng-model="bingoJackpots.category">
+            </input>
+            <input type="text" name="label" placeholder="Label" ng-model="bingoJackpots.label"></input>
+            <input type="text" name="amount" placeholder="Amount" ng-model="bingoJackpots.amount"></input>
+            <input type="submit" value="submit">
+        </form>
+    </div>-->
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, san-serif;
+}
+
+input {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+li span {
+    display: inline-block;
+    line-height: 50px;
+}
+
+li img {
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.over-thirty {
+    background: #F1F1F1;
+    color: black;
+}
+
+.under-thirty {
+    background: #d1d1d1;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* slide from the left ul css animation
+ul.ng-enter {
+  transition:0.3s ease all;
+  opacity:0;
+  transform:translateX(-100%);
+}
+ul.ng-enter.ng-enter-active {
+  opacity:1;
+  transform:translateX(0);
+}
+ul.ng-leave {
+  transition:subli0.3s ease all;
+  opacity:1;
+    transform:translateX(0);
+}
+ul.ng-leave.ng-leave-active {
+  opacity:0;
+ transform:translateX(-100%);
+}*/
+
+
+/*  li.ng-enter {
+   transition: 0.3s ease all;
+   opacity: 0;
+   transform: translateY(10px);
+}
+li.ng-enter.ng-enter-active {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+li.ng-leave {
+   transition: 0.3s ease all;
+   opacity: 1;
+   transform: translateY(0);
+}
+
+li.ng-leave.ng-leave-active {
+   opacity: 0;
+   transform: translateY(10px);
+}  */
+
+li.ng-enter {
+    -webkit-animation: fadeIn 0.2s linear;
+            animation: fadeIn 0.2s linear;
+    -webkit-transition: 2s ease all;
+    transition: 2s ease all;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
